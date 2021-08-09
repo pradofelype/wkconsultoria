@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2021/07/15 19:37:10.414.pas,C:\Users\felyprado\Documents\RAD Studio\Projects\Unit1.pas=C:\Users\felyprado\Documents\Pessoal\WK Consultoria\Teste\PedidoVenda.pas</Transaction>
+    <Transaction>2021/07/15 19:37:10.414.dfm,C:\Users\felyprado\Documents\RAD Studio\Projects\Unit1.dfm=C:\Users\felyprado\Documents\Pessoal\WK Consultoria\Teste\PedidoVenda.dfm</Transaction>
+    <Transaction>2021/07/15 19:37:24.801.dproj,C:\Users\felyprado\Documents\RAD Studio\Projects\Project1.dproj=C:\Users\felyprado\Documents\Pessoal\WK Consultoria\Teste\WKC_FelypePrado.dproj</Transaction>
+    <Transaction>2021/07/18 15:03:18.382.pas,C:\Users\felyprado\Documents\Pessoal\WK Consultoria\Teste\Unit1.pas=C:\Users\felyprado\Documents\Pessoal\WK Consultoria\Teste\Entity.pas</Transaction>
+    <Transaction>2021/07/18 15:05:08.822.pas,C:\Users\felyprado\Documents\Pessoal\WK Consultoria\Teste\Unit1.pas=C:\Users\felyprado\Documents\Pessoal\WK Consultoria\Teste\Clientes.pas</Transaction>
+    <Transaction>2021/07/18 15:29:39.891.pas,C:\Users\felyprado\Documents\Pessoal\WK Consultoria\Teste\Unit1.pas=C:\Users\felyprado\Documents\Pessoal\WK Consultoria\Teste\Controle.pas</Transaction>
+    <Transaction>2021/07/18 15:34:04.978.pas,C:\Users\felyprado\Documents\Pessoal\WK Consultoria\Teste\Unit1.pas=C:\Users\felyprado\Documents\Pessoal\WK Consultoria\Teste\ConexaoBanco.pas</Transaction>
+    <Transaction>2021/07/19 20:58:22.684.pas,C:\Users\felyprado\Documents\Pessoal\WK Consultoria\Teste\Unit1.pas=C:\Users\felyprado\Documents\Pessoal\WK Consultoria\Teste\Pedidos.pas</Transaction>
+    <Transaction>2021/07/20 03:20:05.632.pas,C:\Users\felyprado\Documents\Pessoal\WK Consultoria\Teste\Unit1.pas=C:\Users\felyprado\Documents\Pessoal\WK Consultoria\Teste\PedidosProdutos.pas</Transaction>
+    <Transaction>2021/07/20 03:28:14.023.pas,C:\Users\felyprado\Documents\Pessoal\WK Consultoria\Teste\Unit1.pas=C:\Users\felyprado\Documents\Pessoal\WK Consultoria\Teste\Produtos.pas</Transaction>
+  </Transactions>
+</BorlandProject>
