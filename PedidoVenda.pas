@@ -43,7 +43,6 @@ type
     btnPedidosCancelar: TButton;
     dbeNumeroPedido: TDBEdit;
     dbeDescricao: TDBEdit;
-    SQLConnection1: TSQLConnection;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -83,7 +82,7 @@ var
 implementation
 
 uses
-  StrUtils, Math;
+  StrUtils, Math, DMConexao;
 
 {$R *.dfm}
 

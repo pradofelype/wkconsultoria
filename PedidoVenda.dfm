@@ -86,7 +86,6 @@ object PedidoVendaF: TPedidoVendaF
       Top = 6
       Width = 35
       Height = 25
-      DoubleBuffered = True
       Glyph.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
         2000000000000004000000000000000000000000000000000000000000000000
@@ -122,7 +121,6 @@ object PedidoVendaF: TPedidoVendaF
         00FF000000950000000400000000000000000000000000000000000000000000
         0000000000000000003D000000A8000000E5000000F9000000E4000000A70000
         003C000000000000000000000000000000000000000000000000}
-      ParentDoubleBuffered = False
       TabOrder = 1
       TabStop = False
       OnClick = btnPedidosCarregarClick
@@ -409,27 +407,5 @@ object PedidoVendaF: TPedidoVendaF
   object dsPedido: TDataSource
     Left = 120
     Top = 200
-  end
-  object SQLConnection1: TSQLConnection
-    ConnectionName = 'MySQLConnection'
-    DriverName = 'MySQL'
-    GetDriverFunc = 'getSQLDriverMYSQL'
-    LibraryName = 'dbxmys.dll'
-    Params.Strings = (
-      'DriverName=MySQL'
-      'HostName=localhost'
-      'Database=wk_felypeprado'
-      'User_Name=root'
-      'Password=admin'
-      'ServerCharSet='
-      'BlobSize=-1'
-      'ErrorResourceFile='
-      'LocaleCode=0000'
-      'Compressed=False'
-      'Encrypted=False'
-      'ConnectTimeout=60')
-    VendorLib = 'libmysql.dll'
-    Left = 368
-    Top = 216
   end
 end

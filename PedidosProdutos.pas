@@ -224,6 +224,9 @@ procedure TPedidosProdutos.OnAfterOpen(DataSet: TDataSet);
 begin
   TCurrencyField(DataSet.FindField('VLR_UNITARIO')).DisplayFormat := '#,###,###,##0.00';
   TCurrencyField(DataSet.FindField('VLR_TOTAL')).DisplayFormat := '#,###,###,##0.00';
+
+  PreencherPropriedade;
+  PreencherPropriedadeOLD;
 end;
 
 procedure TPedidosProdutos.PreencherPropriedade;

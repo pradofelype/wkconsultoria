@@ -8,7 +8,7 @@ uses
 type
   TConexaoBanco = class
     private
-      oConexaoBanco: TSQLConnection;
+      function oConexaoBanco: TSQLConnection;
     public
       constructor Create;
       destructor Destroy; override;
@@ -21,7 +21,7 @@ type
 implementation
 
 uses
-  StrUtils, Math, Messages;
+  StrUtils, Math, Messages, DMConexao;
 
 { TConexaoBanco }
 
@@ -47,9 +47,20 @@ begin
 
   InicializarVariaveis;
 
-//  if not FileExists(ArquivoIni) then
-//    Application.MessageBox('Arquivo de configuração não encontrado.', 'Erro de conexão', MB_ICONERROR or MB_OK)
-//  else
+  if not FileExists(ArquivoIni) then
+  begin
+    Application.MessageBox('Arquivo de configuração não encontrado.', 'Erro de conexão', MB_ICONERROR or MB_OK);
+    try
+      Configuracoes := TIniFile.Create(ArquivoIni);
+      Configuracoes.WriteString('Dados', 'Servidor', '127.0.0.1');
+      Configuracoes.WriteString('Dados', 'DataBase', 'wk_felypeprado');
+      Configuracoes.WriteString('Dados', 'UserName', 'root');
+      Configuracoes.WriteString('Dados', 'PassWord', 'masterkey');
+    finally
+      FreeAndNil(Configuracoes);
+    end;
+  end;
+
   begin
     Configuracoes := TIniFile.Create(ArquivoIni);
     try
@@ -62,24 +73,18 @@ begin
       FreeAndNil(Configuracoes);
     end;
 
-    oConexaoBanco := TSQLConnection.Create(Application);
-    oConexaoBanco.LoginPrompt := False;
+    if not Assigned(DMConexaoF) then
+      Application.CreateForm(TDMConexaoF, DMConexaoF);
+
     oConexaoBanco.Connected := False;
+    oConexaoBanco.LoginPrompt := False;
 
     try
-      Servidor := IfThen(Trim(Servidor) = '', '127.0.0.1:3306', Servidor);
+      Servidor := IfThen(Trim(Servidor) = '', '127.0.0.1', Servidor);
       DataBase := IfThen(Trim(DataBase) = '', 'wk_felypeprado', DataBase);
       DriverName := IfThen(Trim(DriverName) = '', 'MySQL', DriverName);
       UserName := IfThen(Trim(UserName) = '', 'root', UserName);
-      PassWord := IfThen(Trim(PassWord) = '', 'admin', PassWord);
-
-
-      oConexaoBanco.ConnectionName := 'MySQLConnection';
-      oConexaoBanco.DriverName := 'MySQL';
-      oConexaoBanco.LibraryName := 'dbxmys.dll';
-      oConexaoBanco.VendorLib := 'libmysql.dll';
-      oConexaoBanco.GetDriverFunc := 'getSQLDriverMYSQL';
-
+      PassWord := IfThen(Trim(PassWord) = '', 'masterkey', PassWord);
 
       oConexaoBanco.Params.Values['Database'] := DataBase;
       oConexaoBanco.Params.Values['Hostname'] := Servidor;
@@ -89,32 +94,8 @@ begin
     except
       on e: Exception do
       begin
-        try
-          MsgERRO := 'Ocorreu o seguinte erro ao tentar conectar no MySQL.'+#13+#10+'Erro "'+e.Message+'".';
-          Application.MessageBox(PWideChar(MsgERRO), 'Erro de conexão MySQL', MB_ICONERROR + MB_OK);
-
-          InicializarVariaveis;
-
-          Servidor := IfThen(Trim(Servidor) = '', '127.0.0.1/3050', Servidor);
-          DataBase := IfThen(Trim(DataBase) = '', ExtractFilePath(Application.ExeName) + 'BD\WK_FELYPEPRADO.FDB', DataBase);
-          DriverName := IfThen(Trim(DriverName) = '', 'Firebird', DriverName);
-          UserName := IfThen(Trim(UserName) = '', 'sysdba', UserName);
-          PassWord := IfThen(Trim(PassWord) = '', 'masterkey', PassWord);
-
-          oConexaoBanco.ConnectionName := 'FBConnection';
-          oConexaoBanco.DriverName := 'Firebird';
-          oConexaoBanco.LibraryName := 'dbxfb.dll';
-          oConexaoBanco.VendorLib := 'fbclient.dl';
-          oConexaoBanco.GetDriverFunc := 'getSQLDriverINTERBASE';
-
-          oConexaoBanco.Connected := False;
-          oConexaoBanco.Params.Values['DataBase'] := Servidor + ':' + DataBase;
-          oConexaoBanco.Params.Values['User_Name'] := UserName;
-          oConexaoBanco.Params.Values['Password'] := PassWord;
-          oConexaoBanco.Connected := True;
-        except
-          Application.MessageBox('Erro ao conectar ao banco de dados. Verifique as preferências do sistema', 'Erro de conexão',MB_ICONERROR + MB_OK);
-        end;
+        MsgERRO := 'Ocorreu o seguinte erro ao tentar conectar no MySQL.'+#13+#10#13+#10+'Erro "'+e.Message+'".';
+        Application.MessageBox(PWideChar(MsgERRO), 'Erro de conexão MySQL', MB_ICONERROR + MB_OK);
       end;
     end;
   end;
@@ -122,14 +103,22 @@ end;
 
 destructor TConexaoBanco.Destroy;
 begin
-  FreeAndNil(oConexaoBanco);
+  DMConexaoF.SQLConexao.Close;
+
+  FreeAndNil(DMConexaoF);
 
   inherited;
 end;
 
 function TConexaoBanco.getConexao: TSQLConnection;
 begin
-  Result := oConexaoBanco;
+//  Result := oConexaoBanco;
+  Result := DMConexao.DMConexaoF.SQLConexao;
+end;
+
+function TConexaoBanco.oConexaoBanco: TSQLConnection;
+begin
+  Result := DMConexao.DMConexaoF.SQLConexao;
 end;
 
 end.

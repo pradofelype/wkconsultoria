@@ -1,127 +1,162 @@
-﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-		<PropertyGroup>
-			<ProjectGuid>{FF723020-EC1A-473E-AB17-52E9EFF9B02B}</ProjectGuid>
-			<ProjectVersion>12.0</ProjectVersion>
-			<MainSource>WKC_FelypePrado.dpr</MainSource>
-			<Config Condition="'$(Config)'==''">Debug</Config>
-			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
-		</PropertyGroup>
-		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
-			<Base>true</Base>
-		</PropertyGroup>
-		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
-			<Cfg_1>true</Cfg_1>
-			<CfgParent>Base</CfgParent>
-			<Base>true</Base>
-		</PropertyGroup>
-		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
-			<Cfg_2>true</Cfg_2>
-			<CfgParent>Base</CfgParent>
-			<Base>true</Base>
-		</PropertyGroup>
-		<PropertyGroup Condition="'$(Base)'!=''">
-			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
-			<DCC_DependencyCheckOutputName>WKC_FelypePrado.exe</DCC_DependencyCheckOutputName>
-			<DCC_ImageBase>00400000</DCC_ImageBase>
-			<DCC_Platform>x86</DCC_Platform>
-		</PropertyGroup>
-		<PropertyGroup Condition="'$(Cfg_1)'!=''">
-			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
-			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
-			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
-			<DCC_DebugInformation>false</DCC_DebugInformation>
-		</PropertyGroup>
-		<PropertyGroup Condition="'$(Cfg_2)'!=''">
-			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
-		</PropertyGroup>
-		<ItemGroup>
-			<DelphiCompile Include="WKC_FelypePrado.dpr">
-				<MainSource>MainSource</MainSource>
-			</DelphiCompile>
-			<DCCReference Include="PedidoVenda.pas">
-				<Form>PedidoVendaF</Form>
-			</DCCReference>
-			<DCCReference Include="Entity.pas"/>
-			<DCCReference Include="Clientes.pas"/>
-			<DCCReference Include="Controle.pas"/>
-			<DCCReference Include="ConexaoBanco.pas"/>
-			<DCCReference Include="Pedidos.pas"/>
-			<DCCReference Include="PedidosProdutos.pas"/>
-			<DCCReference Include="Produtos.pas"/>
-			<BuildConfiguration Include="Base">
-				<Key>Base</Key>
-			</BuildConfiguration>
-			<BuildConfiguration Include="Debug">
-				<Key>Cfg_2</Key>
-				<CfgParent>Base</CfgParent>
-			</BuildConfiguration>
-			<BuildConfiguration Include="Release">
-				<Key>Cfg_1</Key>
-				<CfgParent>Base</CfgParent>
-			</BuildConfiguration>
-		</ItemGroup>
-		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
-		<ProjectExtensions>
-			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
-			<Borland.ProjectType/>
-			<BorlandProject>
-				<Delphi.Personality>
-					<Source>
-						<Source Name="MainSource">WKC_FelypePrado.dpr</Source>
-					</Source>
-					<Parameters>
-						<Parameters Name="UseLauncher">False</Parameters>
-						<Parameters Name="LoadAllSymbols">True</Parameters>
-						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
-					</Parameters>
-					<VersionInfo>
-						<VersionInfo Name="IncludeVerInfo">False</VersionInfo>
-						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
-						<VersionInfo Name="MajorVer">1</VersionInfo>
-						<VersionInfo Name="MinorVer">0</VersionInfo>
-						<VersionInfo Name="Release">0</VersionInfo>
-						<VersionInfo Name="Build">0</VersionInfo>
-						<VersionInfo Name="Debug">False</VersionInfo>
-						<VersionInfo Name="PreRelease">False</VersionInfo>
-						<VersionInfo Name="Special">False</VersionInfo>
-						<VersionInfo Name="Private">False</VersionInfo>
-						<VersionInfo Name="DLL">False</VersionInfo>
-						<VersionInfo Name="Locale">1046</VersionInfo>
-						<VersionInfo Name="CodePage">1252</VersionInfo>
-					</VersionInfo>
-					<VersionInfoKeys>
-						<VersionInfoKeys Name="CompanyName"/>
-						<VersionInfoKeys Name="FileDescription"/>
-						<VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
-						<VersionInfoKeys Name="InternalName"/>
-						<VersionInfoKeys Name="LegalCopyright"/>
-						<VersionInfoKeys Name="LegalTrademarks"/>
-						<VersionInfoKeys Name="OriginalFilename"/>
-						<VersionInfoKeys Name="ProductName"/>
-						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
-						<VersionInfoKeys Name="Comments"/>
-					</VersionInfoKeys>
-					<Excluded_Packages>
-						<Excluded_Packages Name="C:\Windows\SYSTEM32\acnt2010_R.bpl">AlphaControls run-time library</Excluded_Packages>
-						<Excluded_Packages Name="C:\Windows\system32\exprsd2k10.bpl">Expression parser 3.4.2</Excluded_Packages>
-						<Excluded_Packages Name="$(BDS)\bin\samplevisualizers140.bpl">Embarcadero Sample Debugger Visualizers</Excluded_Packages>
-						<Excluded_Packages Name="$(BDS)\bin\dcloffice2k140.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
-						<Excluded_Packages Name="$(BDS)\bin\dclofficexp140.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
-						<Excluded_Packages Name="C:\Area de Trabalho\FrameWork\FrameWork_D2010\Biblioteca\Dev Express.VCL\Library\Delphi14\dclcxSchedulerD14.bpl">ExpressScheduler 3 by Developer Express Inc.</Excluded_Packages>
-						<Excluded_Packages Name="C:\Area de Trabalho\FrameWork\FrameWork_D2010\Biblioteca\Dev Express.VCL\Library\Delphi14\dclcxSchedulerGridD14.bpl">ExpressScheduler 3 connection to ExpressQuantumGrid by Developer Express Inc.</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\Public\Documents\RAD Studio\7.0\Bpl\doa41d2010.bpl">File C:\Users\Public\Documents\RAD Studio\7.0\Bpl\doa41d2010.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Area de Trabalho\FrameWork\FrameWork_D2010\Biblioteca\Dev Express.VCL\Library\Delphi14\dcldxPSCoreD14.bpl">File C:\Area de Trabalho\FrameWork\FrameWork_D2010\Biblioteca\Dev Express.VCL\Library\Delphi14\dcldxPSCoreD14.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Area de Trabalho\FrameWork\FrameWork_D2010\Biblioteca\Dev Express.VCL\Library\Delphi14\dxPSLnksD14.bpl">File C:\Area de Trabalho\FrameWork\FrameWork_D2010\Biblioteca\Dev Express.VCL\Library\Delphi14\dxPSLnksD14.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Area de Trabalho\FrameWork\FrameWork_D2010\Biblioteca\Dev Express.VCL\Library\Delphi14\dxPSDBTeeChartD14.bpl">File C:\Area de Trabalho\FrameWork\FrameWork_D2010\Biblioteca\Dev Express.VCL\Library\Delphi14\dxPSDBTeeChartD14.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Area de Trabalho\FrameWork\FrameWork_D2010\Biblioteca\Dev Express.VCL\Library\Delphi14\dxLayoutControlcxEditAdaptersD14.bpl">File C:\Area de Trabalho\FrameWork\FrameWork_D2010\Biblioteca\Dev Express.VCL\Library\Delphi14\dxLayoutControlcxEditAdaptersD14.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Area de Trabalho\FrameWork\FrameWork_D2010\Biblioteca\Dev Express.VCL\Library\Delphi14\dxPScxCommonD14.bpl">File C:\Area de Trabalho\FrameWork\FrameWork_D2010\Biblioteca\Dev Express.VCL\Library\Delphi14\dxPScxCommonD14.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Area de Trabalho\FrameWork\FrameWork_D2010\Biblioteca\Dev Express.VCL\Library\Delphi14\dxPScxGrid6LnkD14.bpl">File C:\Area de Trabalho\FrameWork\FrameWork_D2010\Biblioteca\Dev Express.VCL\Library\Delphi14\dxPScxGrid6LnkD14.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Area de Trabalho\FrameWork\FrameWork_D2010\Biblioteca\Dev Express.VCL\Library\Delphi14\dxPScxPCProdD14.bpl">File C:\Area de Trabalho\FrameWork\FrameWork_D2010\Biblioteca\Dev Express.VCL\Library\Delphi14\dxPScxPCProdD14.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Area de Trabalho\FrameWork\FrameWork_D2010\Biblioteca\Dev Express.VCL\Library\Delphi14\dxPSdxLCLnkD14.bpl">File C:\Area de Trabalho\FrameWork\FrameWork_D2010\Biblioteca\Dev Express.VCL\Library\Delphi14\dxPSdxLCLnkD14.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Area de Trabalho\FrameWork\FrameWork_D2010\Biblioteca\Dev Express.VCL\Library\Delphi14\dxPScxExtCommonD14.bpl">File C:\Area de Trabalho\FrameWork\FrameWork_D2010\Biblioteca\Dev Express.VCL\Library\Delphi14\dxPScxExtCommonD14.bpl not found</Excluded_Packages>
-					</Excluded_Packages>
-				</Delphi.Personality>
-			</BorlandProject>
-			<ProjectFileVersion>12</ProjectFileVersion>
-		</ProjectExtensions>
-	</Project>
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{FF723020-EC1A-473E-AB17-52E9EFF9B02B}</ProjectGuid>
+        <ProjectVersion>15.4</ProjectVersion>
+        <MainSource>WKC_FelypePrado.dpr</MainSource>
+        <Config Condition="'$(Config)'==''">Debug</Config>
+        <DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+        <Base>True</Base>
+        <TargetedPlatforms>1</TargetedPlatforms>
+        <AppType>Application</AppType>
+        <FrameworkType>VCL</FrameworkType>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
+        <Base_Win32>true</Base_Win32>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Base)'=='true') or '$(Base_Win64)'!=''">
+        <Base_Win64>true</Base_Win64>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+        <Cfg_1>true</Cfg_1>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+        <Cfg_2>true</Cfg_2>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win32)'!=''">
+        <Cfg_2_Win32>true</Cfg_2_Win32>
+        <CfgParent>Cfg_2</CfgParent>
+        <Cfg_2>true</Cfg_2>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base)'!=''">
+        <VerInfo_Locale>1046</VerInfo_Locale>
+        <DCC_Namespace>Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;System;Xml;Data;Datasnap;Web;Soap;Winapi;$(DCC_Namespace)</DCC_Namespace>
+        <SanitizedProjectName>WKC_FelypePrado</SanitizedProjectName>
+        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <DCC_DependencyCheckOutputName>WKC_FelypePrado.exe</DCC_DependencyCheckOutputName>
+        <DCC_ImageBase>00400000</DCC_ImageBase>
+        <DCC_Platform>x86</DCC_Platform>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win32)'!=''">
+        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+        <DCC_Namespace>System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <Icon_MainIcon>WKC_FelypePrado_Icon.ico</Icon_MainIcon>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win64)'!=''">
+        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+        <Icon_MainIcon>WKC_FelypePrado_Icon.ico</Icon_MainIcon>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1)'!=''">
+        <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+        <DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+        <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+        <DCC_DebugInformation>0</DCC_DebugInformation>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2)'!=''">
+        <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+    </PropertyGroup>
+    <ItemGroup>
+        <DelphiCompile Include="$(MainSource)">
+            <MainSource>MainSource</MainSource>
+        </DelphiCompile>
+        <DCCReference Include="PedidoVenda.pas">
+            <Form>PedidoVendaF</Form>
+        </DCCReference>
+        <DCCReference Include="Entity.pas"/>
+        <DCCReference Include="Clientes.pas"/>
+        <DCCReference Include="Controle.pas"/>
+        <DCCReference Include="ConexaoBanco.pas"/>
+        <DCCReference Include="Pedidos.pas"/>
+        <DCCReference Include="PedidosProdutos.pas"/>
+        <DCCReference Include="Produtos.pas"/>
+        <DCCReference Include="DMConexao.pas">
+            <Form>DMConexaoF</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <BuildConfiguration Include="Debug">
+            <Key>Cfg_2</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Base">
+            <Key>Base</Key>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Release">
+            <Key>Cfg_1</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+    </ItemGroup>
+    <Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+    <ProjectExtensions>
+        <Borland.Personality>Delphi.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Delphi.Personality>
+                <Source>
+                    <Source Name="MainSource">WKC_FelypePrado.dpr</Source>
+                </Source>
+                <Parameters>
+                    <Parameters Name="UseLauncher">False</Parameters>
+                    <Parameters Name="LoadAllSymbols">True</Parameters>
+                    <Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+                </Parameters>
+                <VersionInfo>
+                    <VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+                    <VersionInfo Name="AutoIncBuild">False</VersionInfo>
+                    <VersionInfo Name="MajorVer">1</VersionInfo>
+                    <VersionInfo Name="MinorVer">0</VersionInfo>
+                    <VersionInfo Name="Release">0</VersionInfo>
+                    <VersionInfo Name="Build">0</VersionInfo>
+                    <VersionInfo Name="Debug">False</VersionInfo>
+                    <VersionInfo Name="PreRelease">False</VersionInfo>
+                    <VersionInfo Name="Special">False</VersionInfo>
+                    <VersionInfo Name="Private">False</VersionInfo>
+                    <VersionInfo Name="DLL">False</VersionInfo>
+                    <VersionInfo Name="Locale">1046</VersionInfo>
+                    <VersionInfo Name="CodePage">1252</VersionInfo>
+                </VersionInfo>
+                <VersionInfoKeys>
+                    <VersionInfoKeys Name="CompanyName"/>
+                    <VersionInfoKeys Name="FileDescription"/>
+                    <VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+                    <VersionInfoKeys Name="InternalName"/>
+                    <VersionInfoKeys Name="LegalCopyright"/>
+                    <VersionInfoKeys Name="LegalTrademarks"/>
+                    <VersionInfoKeys Name="OriginalFilename"/>
+                    <VersionInfoKeys Name="ProductName"/>
+                    <VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+                    <VersionInfoKeys Name="Comments"/>
+                </VersionInfoKeys>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k200.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp200.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                </Excluded_Packages>
+            </Delphi.Personality>
+            <Platforms>
+                <Platform value="Win32">True</Platform>
+                <Platform value="Win64">False</Platform>
+            </Platforms>
+            <ModelSupport>False</ModelSupport>
+        </BorlandProject>
+        <ProjectFileVersion>12</ProjectFileVersion>
+    </ProjectExtensions>
+    <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>
+</Project>
